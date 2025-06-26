@@ -9,14 +9,9 @@ export class OrganizeImportsCommand {
 
     if (!this.validateEditor(editor)) return;
 
-    const relativePath = vscode.workspace.asRelativePath(editor!.document.uri);
-    vscode.window.showInformationMessage(
-      `Organizando imports en ${relativePath}...`
-    );
-
     try {
       await this.fileProcessor.processDocument(editor!.document);
-      vscode.window.showInformationMessage("¡Imports organizados con éxito!");
+      vscode.window.showInformationMessage("¡Imports organized successfully!");
     } catch (error) {
       this.handleError(error);
     }
@@ -26,8 +21,8 @@ export class OrganizeImportsCommand {
     editor: vscode.TextEditor | undefined
   ): editor is vscode.TextEditor {
     if (!editor) {
-      vscode.window.showInformationMessage(
-        "No hay un archivo activo para organizar."
+      vscode.window.showErrorMessage(
+        "There is no file to organize..."
       );
       return false;
     }
@@ -36,6 +31,6 @@ export class OrganizeImportsCommand {
 
   private handleError(error: unknown): void {
     const message = error instanceof Error ? error.message : String(error);
-    vscode.window.showErrorMessage(`Error al organizar imports: ${message}`);
+    vscode.window.showErrorMessage(`Error while organizing imports: ${message}`);
   }
 }

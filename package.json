@@ -9,15 +9,13 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:angular-import-organizer.organize"
-  ],
+  "activationEvents":  [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "angular-import-organizer.organize",
-        "title": "Organize Angular Imports"
+        "title": "Organize imports in this file"
       }
     ]
   },
