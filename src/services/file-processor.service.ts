@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { ImportParserService } from "./import-parser.service";
 import { ImportOrganizerService } from "./import-organizer.service";
 import { RegexUtils } from "../utils/regex.utils";
+import { literals } from "../core/literals";
 
 export class FileProcessorService {
   constructor(
@@ -10,6 +11,9 @@ export class FileProcessorService {
   ) {}
 
   async processDocument(document: vscode.TextDocument): Promise<void> {
+    if (!RegexUtils.isNonTestTsFile(document.fileName))
+      throw Error(literals.services.FILE_NOT_SUPPORTED_ERROR);
+
     const content = document.getText();
     const imports = this.parser.parseImports(content);
 

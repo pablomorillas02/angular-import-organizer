@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { FileProcessorService } from "../services/file-processor.service";
+import { literals } from "../core/literals";
 
 export class OrganizeImportsCommand {
   constructor(private readonly fileProcessor = new FileProcessorService()) {}
@@ -11,7 +12,7 @@ export class OrganizeImportsCommand {
 
     try {
       await this.fileProcessor.processDocument(editor!.document);
-      vscode.window.showInformationMessage("¡Imports organized successfully!");
+      vscode.window.showInformationMessage(literals.window.SUCEESS);
     } catch (error) {
       this.handleError(error);
     }
@@ -22,7 +23,7 @@ export class OrganizeImportsCommand {
   ): editor is vscode.TextEditor {
     if (!editor) {
       vscode.window.showErrorMessage(
-        "There is no file to organize..."
+        literals.window.NO_FILE
       );
       return false;
     }
@@ -31,6 +32,6 @@ export class OrganizeImportsCommand {
 
   private handleError(error: unknown): void {
     const message = error instanceof Error ? error.message : String(error);
-    vscode.window.showErrorMessage(`Error while organizing imports: ${message}`);
+    vscode.window.showErrorMessage(`${literals.window.ERROR} ${message}`);
   }
 }

@@ -2,6 +2,7 @@ import { ImportStatement } from "../models/import.model";
 import { ImportCategory } from "../core/categories";
 import { IMPORT_PATTERNS } from "../core/patterns";
 import { RegexUtils } from "../utils/regex.utils";
+import { literals } from "../core/literals";
 
 export class ImportParserService {
   parseImports(content: string): ImportStatement[] {
@@ -24,7 +25,7 @@ export class ImportParserService {
   }
 
   private isImportStatement(statement: string): boolean {
-    return statement.startsWith("import");
+    return statement.startsWith(literals.services.STARTS_WITH);
   }
 
   private createImportStatement(

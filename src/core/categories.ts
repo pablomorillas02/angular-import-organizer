@@ -1,3 +1,5 @@
+import { literals } from "./literals";
+
 export enum ImportCategory {
   ANGULAR_CORE = 1,
   THIRD_PARTY = 2,
@@ -10,12 +12,12 @@ export enum ImportCategory {
 }
 
 export const CATEGORY_HEADERS: Record<ImportCategory, string> = {
-  [ImportCategory.ANGULAR_CORE]: "// 1. Angular Core",
-  [ImportCategory.THIRD_PARTY]: "// 2. Third-party Libraries",
-  [ImportCategory.INTERFACES_TYPES]: "// 3. Application Interfaces/Types",
-  [ImportCategory.CONSTANTS_CONFIGS]: "// 4. Constants/Configs",
-  [ImportCategory.SERVICES]: "// 5. Services",
-  [ImportCategory.HELPERS]: "// 6. Helpers",
-  [ImportCategory.COMPONENTS]: "// 7. Components",
-  [ImportCategory.UNKNOWN]: "// 8. Unknown",
+  [ImportCategory.ANGULAR_CORE]: literals.categories.ANGULAR_CORE,
+  [ImportCategory.THIRD_PARTY]: literals.categories.THIRD_PARTY,
+  [ImportCategory.INTERFACES_TYPES]: literals.categories.INTERFACES_TYPES,
+  [ImportCategory.CONSTANTS_CONFIGS]: literals.categories.CONSTANTS_CONFIGS,
+  [ImportCategory.SERVICES]: literals.categories.SERVICES,
+  [ImportCategory.HELPERS]: literals.categories.HELPERS,
+  [ImportCategory.COMPONENTS]: literals.categories.COMPONENTS,
+  [ImportCategory.UNKNOWN]: literals.categories.UNKNOWN,
 };

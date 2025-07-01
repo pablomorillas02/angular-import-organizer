@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { OrganizeImportsCommand } from "./commands/organize-imports.commands";
 
 export function activate(context: vscode.ExtensionContext): void {
-  console.log('¡La extensión "Organizador de Imports Angular" está activa!');
+  console.log('angular-import-organizer is active!');
 
   const organizeCommand = new OrganizeImportsCommand();
 
