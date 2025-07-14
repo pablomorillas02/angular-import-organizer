@@ -1,71 +1,44 @@
-# angular-import-organizer README
+# Angular Import Organizer
 
-This is the README for your extension "angular-import-organizer". After writing up a brief description, we recommend including the following sections.
+Automatically organize all imports in your Angular project files following clear categories and conventions. This Visual Studio Code extension helps you keep your code clean and maintainable by sorting and grouping imports in TypeScript files.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Sorts and groups imports in Angular TypeScript files.
+- Categorizes imports: Angular Core, third-party libraries, interfaces/types, constants/configs, services, helpers, components, and unknown.
+- Inserts category headers for each group of imports.
+- Works with a single command from the editor.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Clone or download this repository.
+2. Run `npm install` to install dependencies.
+3. Compile the extension with `npm run compile`.
+4. Open the folder in VS Code and press `F5` to launch in development mode.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
 
-## Requirements
+1. Open a TypeScript file in your Angular project.
+2. Run the command `Organize imports in this file` from the command palette (`Ctrl+Shift+P`).
+3. Imports will be automatically sorted and grouped.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Configuration
 
-## Extension Settings
+Currently, the extension does not expose customizable settings. All organization rules are predefined.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Contributing
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Contributions are welcome! See the [CONTRIBUTING.md](CONTRIBUTING.md) file for details.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- Only organizes `.ts` files that are not test files (`.spec.ts`).
+- Does not support files outside Angular projects or those not following standard import conventions.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+See the [CHANGELOG.md](CHANGELOG.md) file for the change history.
 
 ---
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+**Enjoy cleaner and more organized code in your Angular projects!**
