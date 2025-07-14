@@ -18,4 +18,4 @@ export const literals = {
         FILE_NOT_SUPPORTED_ERROR: 'file not supported',
         STARTS_WITH: 'import',
     }
-}
+};
