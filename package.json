@@ -19,7 +19,7 @@
     "commands": [
       {
         "command": "angular-import-organizer.organize",
-        "title": "Organize imports in this file"
+        "title": "Angular import organizer: Organize imports in this file"
       }
     ]
   },

@@ -41,9 +41,10 @@ export class ImportOrganizerService {
   }
 
   private formatImportGroup(group: ImportGroup): string {
-    const header = CATEGORY_HEADERS[group.category];
+    // const header = CATEGORY_HEADERS[group.category];
     const imports = group.imports.map((imp) => imp.fullImport).join("\n");
 
-    return header ? `${header}\n${imports}` : imports;
+    // return header ? `${header}\n${imports}` : imports;
+    return imports;
   }
 }
