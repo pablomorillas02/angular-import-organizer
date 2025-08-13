@@ -1,9 +1,9 @@
 export class RegexUtils {
-  static readonly IMPORT_BLOCK_FINDER =
+  static readonly IMPORT_BLOCK_FINDER: RegExp =
     /(^import(?:.|\n|\r)*?;)|(^\/\/ \d\..*)/gm;
-  static readonly IMPORT_PATH_EXTRACTOR = /from\s+['"]([^'"]+)['"]/;
+  static readonly IMPORT_PATH_EXTRACTOR: RegExp = /from\s+['"]([^'"]+)['"]/;
 
-  static readonly NON_TEST_TS_FILE_VALIDATOR = /(?<!\.spec)\.ts$/;
+  static readonly NON_TEST_TS_FILE_VALIDATOR: RegExp = /(?<!\.spec)\.ts$/;
 
   static extractImportPath(importStatement: string): string | null {
     const match = importStatement.match(this.IMPORT_PATH_EXTRACTOR);

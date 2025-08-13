@@ -2,7 +2,7 @@
   "name": "angular-import-organizer",
   "displayName": "Angular Import Organizer",
   "description": "A tool to automatically organize every import in your Angular project.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/pablomorillas02/angular-import-organizer.git"
@@ -20,6 +20,10 @@
       {
         "command": "angular-import-organizer.organize",
         "title": "Angular import organizer: Organize imports in this file"
+      },
+      {
+        "command": "angular-import-organizer.organize-all",
+        "title": "Angular import organizer: Organize all imports in this project"
       }
     ]
   },

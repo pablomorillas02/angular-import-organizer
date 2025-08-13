@@ -22,6 +22,8 @@ Automatically organize all imports in your Angular project files following clear
 2. Run the command `Organize imports in this file` from the command palette (`Ctrl+Shift+P`).
 3. Imports will be automatically sorted and grouped.
 
+> You can also organize all imports under `src` folder by running: `Organize all imports in this project`.
+
 ## Configuration
 
 Currently, the extension does not expose customizable settings. All organization rules are predefined.
