@@ -2,6 +2,8 @@
 
 Automatically organize all imports in your Angular project files following clear categories and conventions. This Visual Studio Code extension helps you keep your code clean and maintainable by sorting and grouping imports in TypeScript files.
 
+> Original idea grabbed from: https://gist.github.com/Fsegura-nter/93b635903d7e4c9791e6debcda9b5dc9
+
 ## Features
 
 - Sorts and groups imports in Angular TypeScript files.
