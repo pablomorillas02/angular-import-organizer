@@ -11,13 +11,16 @@ export class FileProcessorService {
   ) {}
 
   async processDocument(document: vscode.TextDocument): Promise<void> {
-    if (!RegexUtils.isNonTestTsFile(document.fileName))
+    if (!RegexUtils.isNonTestTsFile(document.fileName)) {
       throw Error(literals.services.FILE_NOT_SUPPORTED_ERROR);
+    }
 
     const content = document.getText();
     const imports = this.parser.parseImports(content);
 
-    if (imports.length === 0) return;
+    if (imports.length === 0) {
+      return;
+    }
 
     const organizedImportsText = this.organizer.organizeImports(imports);
     const replaceRange = this.calculateReplaceRange(document, content);

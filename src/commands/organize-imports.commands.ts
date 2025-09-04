@@ -8,7 +8,9 @@ export class OrganizeImportsCommand {
   async execute(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
 
-    if (!this.validateEditor(editor)) return;
+    if (!this.validateEditor(editor)) {
+      return;
+    }
 
     try {
       await this.fileProcessor.processDocument(editor!.document);

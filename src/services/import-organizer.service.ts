@@ -3,7 +3,9 @@ import { ImportCategory, CATEGORY_HEADERS } from "../core/categories";
 
 export class ImportOrganizerService {
   organizeImports(imports: ImportStatement[]): string {
-    if (imports.length === 0) return "";
+    if (imports.length === 0) {
+      return "";
+    }
 
     const sortedImports = this.sortImports(imports);
     const groupedImports = this.groupImportsByCategory(sortedImports);

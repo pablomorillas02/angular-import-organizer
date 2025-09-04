@@ -17,7 +17,9 @@ export class ImportParserService {
           fullImport,
           match.index!
         );
-        if (importStatement) uniqueImports.set(fullImport, importStatement);
+        if (importStatement) {
+          uniqueImports.set(fullImport, importStatement);
+        }
       }
     }
 
@@ -33,7 +35,9 @@ export class ImportParserService {
     startIndex: number
   ): ImportStatement | null {
     const path = RegexUtils.extractImportPath(fullImport);
-    if (!path) return null;
+    if (!path) {
+      return null;
+    }
 
     return {
       fullImport,
@@ -46,7 +50,9 @@ export class ImportParserService {
 
   private categorizeImport(path: string): ImportCategory {
     for (const [category, pattern] of Object.entries(IMPORT_PATTERNS)) {
-      if (pattern.test(path)) return Number(category) as ImportCategory;
+      if (pattern.test(path)) {
+        return Number(category) as ImportCategory;
+      }
     }
 
     return ImportCategory.UNKNOWN;
