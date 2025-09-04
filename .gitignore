@@ -3,3 +3,8 @@ dist
 node_modules
 .vscode-test/
 *.vsix
+
+reports/*
+
+# stryker temp files
+.stryker-tmp
