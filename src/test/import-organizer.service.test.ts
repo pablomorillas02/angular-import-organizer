@@ -10,7 +10,21 @@ suite("ImportOrganizerService", () => {
     assert.strictEqual(service.organizeImports([]), "");
   });
 
-  test("should group and sort imports by category and path", () => {
+  test("should handle single import", () => {
+    const imports: ImportStatement[] = [
+      {
+        fullImport: "import { A } from '@angular/core';",
+        path: "@angular/core",
+        category: ImportCategory.ANGULAR_CORE,
+        startIndex: 0,
+        endIndex: 32,
+      },
+    ];
+    const result = service.organizeImports(imports);
+    assert.ok(result.includes("import { A } from"));
+  });
+
+  test("should group and sort imports by category and path without headers", () => {
     const imports: ImportStatement[] = [
       {
         fullImport: "import { B } from 'rxjs';",
@@ -34,40 +48,46 @@ suite("ImportOrganizerService", () => {
         endIndex: 95,
       },
     ];
+
     const result = service.organizeImports(imports);
-    assert.ok(result.includes("// Angular Core"));
-    assert.ok(result.includes("// Third-party libraries"));
-    assert.ok(result.includes("// Services"));
-    assert.ok(result.indexOf("Angular Core") < result.indexOf("Third-party"));
-    assert.ok(result.indexOf("Third-party") < result.indexOf("Services"));
+
+    // Expect three groups separated by a blank line
+    const groups = result.split('\n\n').map((g) => g.trim());
+    assert.strictEqual(groups.length, 3);
+
+    // First group should be ANGULAR_CORE imports (category 1)
+    assert.ok(groups[0].includes("@angular/core"));
+
+    // Second group should be THIRD_PARTY
+    assert.ok(groups[1].includes("rxjs"));
+
+    // Third group should be SERVICES
+    assert.ok(groups[2].includes("./app.service"));
   });
 
-  test("should handle only unknown category", () => {
+  test("should sort imports within a group by path", () => {
     const imports: ImportStatement[] = [
       {
-        fullImport: "import { X } from './unknown';",
-        path: "./unknown",
-        category: ImportCategory.UNKNOWN,
+        fullImport: "import { Z } from './b.service';",
+        path: "./b.service",
+        category: ImportCategory.SERVICES,
         startIndex: 0,
-        endIndex: 32,
+        endIndex: 28,
+      },
+      {
+        fullImport: "import { Y } from './a.service';",
+        path: "./a.service",
+        category: ImportCategory.SERVICES,
+        startIndex: 29,
+        endIndex: 61,
       },
     ];
-    const result = service.organizeImports(imports);
-    assert.ok(result.includes("// Unknown"));
-  });
 
-  test("should handle single import", () => {
-    const imports: ImportStatement[] = [
-      {
-        fullImport: "import { A } from '@angular/core';",
-        path: "@angular/core",
-        category: ImportCategory.ANGULAR_CORE,
-        startIndex: 0,
-        endIndex: 32,
-      },
-    ];
     const result = service.organizeImports(imports);
-    assert.ok(result.includes("// Angular Core"));
-    assert.ok(result.includes("import { A } from"));
+    const lines = result.split('\n').map((l) => l.trim());
+    // Within the same group, a.service should come before b.service
+    const idxA = lines.findIndex((l) => l.includes("a.service"));
+    const idxB = lines.findIndex((l) => l.includes("b.service"));
+    assert.ok(idxA >= 0 && idxB >= 0 && idxA < idxB);
   });
 });
